@@ -77,7 +77,7 @@
             }
         });
          if (form.valid()==true) {
-          $('#loginform').submit();
+          $('#Adminloginform').submit();
         }
     });
 });

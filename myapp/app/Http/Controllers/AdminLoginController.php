@@ -17,6 +17,7 @@ class AdminLoginController extends Controller
 
     public function submitAdminLoginPage(Request $request){
 
+       
         $request->validate([
             'AdminID'=>'required|min:2',
             'AdminPassword'=>'required|min:2',
@@ -26,7 +27,11 @@ class AdminLoginController extends Controller
             'AdminPassword.required'=>'Enter  Password',
             'AdminPassword.min'=>'Enter Valid Password',
         ]);
+
+        $input[]=0;
+       
         dd($request);
+        
         
     }
 }
