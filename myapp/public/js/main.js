@@ -1,3 +1,4 @@
+console.log('hi main js is running');
 var index = 0;
 var slides = document.querySelectorAll(".slides");
 var dot = document.querySelectorAll(".dot");

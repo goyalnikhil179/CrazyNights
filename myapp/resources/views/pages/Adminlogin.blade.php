@@ -10,7 +10,16 @@
           <div class="form-style">
             <form name="Adminloginform" id="Adminloginform" action="{{route('submitAdminLoginPage')}}" method="Post">
                 @csrf
-  
+                <div class="form-group pb-3">  
+                @if($errors->any())
+                    <span class="text-danger">
+                        @error('CommonErr')
+                            {{$message}}
+                        @enderror
+                    </span>
+                 @endif
+                </div>
+
                <div class="form-group pb-3">    
                   <label for="AdminID" class="pb-3"></label>
                   <input type="Text" id="AdminID" name="AdminID" value="{{old('AdminID')}}"placeholder="Enter Admin ID" class="form-control"  >   

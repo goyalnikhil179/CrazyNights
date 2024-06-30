@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Admin;
 
 class AdminLoginController extends Controller
 {
@@ -11,26 +12,45 @@ class AdminLoginController extends Controller
         return view('layouts.DashBoard');
     }
     public function getAdminLoginPage(){
-        return view('pages.login');
+        return view('pages.Adminlogin');
     }
 
 
     public function submitAdminLoginPage(Request $request){
 
-       
         $request->validate([
             'AdminID'=>'required|min:2',
-            'AdminPassword'=>'required|min:2',
+            'AdminPassword'=>'required|min:2|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
         ],[
             'AdminID.required'=>'Enter Admin ID',
             'Admin.min'=>'Enter Valid AdminID',
             'AdminPassword.required'=>'Enter  Password',
             'AdminPassword.min'=>'Enter Valid Password',
+            'AdminPassword.regex'=>'Invalid Password Format',
         ]);
 
-        $input[]=0;
+        $checkID=Admin::where('AdminID',$request->AdminID)->first();
+       // $activecheck= $data->IsActive;
+
+        if($checkID){
+           $data=Admin::where('AdminPassword',$checkID->AdminPassword)->first();
+
+            if($data){
+
+            }
+
+            dd("id mil gayi");
+        }
+        else{
+            return back()->withErrors([
+                'CommonErr' => 'Invalid User ID or User do not exist',
+            ]);
+        }
+
+        dd($activecheck);
+        $data[]=$request->all();
        
-        dd($request);
+        
         
         
     }
