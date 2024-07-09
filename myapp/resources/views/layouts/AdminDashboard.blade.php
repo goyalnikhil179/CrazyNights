@@ -7,6 +7,7 @@ $admindata=session()->get('AdminData')
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{asset('css/Dashboard.css')}}" >
+    <link rel="stylesheet" href="{{asset('css/DashboardProfile.css')}}" >
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -34,12 +35,12 @@ $admindata=session()->get('AdminData')
             >
           </li>
           <li>
-            <a class="sidebar-list-item" href="#0">
+            <a class="sidebar-list-item" href="{{URL::to('/adminProfile')}}">
               <i class="fas fa-user icon"></i><em>My Profile</em></a
             >
           </li>
           <li>
-            <a class="sidebar-list-item" href="{{URL::to('/myproperties')}}">
+            <a class="sidebar-list-item" href="{{URL::to('/adminProfile')}}">
               <i class="fas fa-tasks icon"></i><em>My Products
               </em></a
             >

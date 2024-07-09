@@ -14,7 +14,6 @@ class Admin extends Model
         'AdminID',
         'AdminName',
         'AdminPhoneNumber',
-        'AdminPhoneNumber',
         'AdminPassword',
         'created_at',
         'updated_at',
