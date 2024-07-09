@@ -9,7 +9,7 @@ class AdminLoginController extends Controller
 {
 
     public function index(){
-        return view('layouts.DashBoard');
+        return view('layouts.AdminLoginLanding');
     }
     public function getAdminLoginPage(){
         return view('pages.Adminlogin');
@@ -29,29 +29,26 @@ class AdminLoginController extends Controller
             'AdminPassword.regex'=>'Invalid Password Format',
         ]);
 
-        $checkID=Admin::where('AdminID',$request->AdminID)->first();
-       // $activecheck= $data->IsActive;
+        $checkdata=Admin::where('AdminID',$request->AdminID)->first();
+    
+        if($checkdata->AdminPassword===$request->AdminPassword && $checkdata->IsActive===1){
 
-        if($checkID){
-           $data=Admin::where('AdminPassword',$checkID->AdminPassword)->first();
+            $data=$checkdata->toArray();
 
-            if($data){
+            $request->session()->put('AdminData', $checkdata);
+             
+            return view('layouts.AdminDashBoard');
+            
 
-            }
-
-            dd("id mil gayi");
         }
         else{
             return back()->withErrors([
-                'CommonErr' => 'Invalid User ID or User do not exist',
+                'CommonErr' => 'Invalid User ID or Password ',
             ]);
         }
+    }
 
-        dd($activecheck);
-        $data[]=$request->all();
-       
-        
-        
-        
+    public function logutAdmin(){
+
     }
 }

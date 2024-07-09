@@ -1,4 +1,4 @@
-@extends('layouts.DashBoard')
+@extends('layouts.AdminLoginLanding')
 
 @section('maincontent')
 <div class="row m-5 no-gutters shadow-lg">
